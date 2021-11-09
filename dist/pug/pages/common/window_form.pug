@@ -1,0 +1,82 @@
+.wf
+    .wf_mask
+        .wf_wrapper
+            .wf_window
+                #window_form
+                    p= "Создать новую карточку"
+                    form.window_form
+                        label(for="input_name")
+                            input#input_name(type="text" name="name" required="true")
+                            span= "Название:"
+                        label.file(for="input_file")
+                            button#input_file_btn.button_bordered(type="button")
+                                span.title= "Выбрать фото"
+                                span.button_bordered__border.bottom.hor
+                                span.button_bordered__border.top.hor
+                                span.button_bordered__border.left.vert
+                                span.button_bordered__border.right.vert
+                            input#input_file(type="file" name="file" required="true")
+                            span= "Фото:"
+                        label(for="input_desc")
+                            textarea#input_desc(type="text" name="description" required="true" rows="3")
+                            span= "Описание:"
+                        label.checkbox(for="input_check")
+                            input#input_check(type="checkbox" name="description" required="true")
+                            img#input_check_img(data-active="icons/checkbox-active.svg" data-default="icons/checkbox-default.svg" src="icons/checkbox-default.svg")
+                            span= "Показать"
+                        .buttons
+                            button.disabled(disabled="disabled")= "ОК"
+                            button.window_form__cancel.button_bordered(type="button")= "Отмена"
+                                span.button_bordered__border.bottom.hor
+                                span.button_bordered__border.top.hor
+                                span.button_bordered__border.left.vert
+                                span.button_bordered__border.right.vert
+
+script.
+  (function () {
+
+    function checkbox () {
+      const checkbox = document.querySelector("#input_check") || null,
+        img = document.querySelector("#input_check_img") || null;
+      if (!checkbox || !img) { return false;}
+
+      const toggle = status => img.src = img.getAttribute(status ? 'data-active' : 'data-default')
+
+      checkbox.addEventListener("change", function () {toggle(this.checked)})
+      toggle(false)
+    }
+
+    function file () {
+      const button = document.querySelector("#input_file_btn") || null,
+        input = document.querySelector("#input_file") || null;
+      if (!button || !input) { return false;}
+
+      const paste = title => button.querySelector(".title").innerHTML = title
+
+      button.addEventListener("click", () => input.click())
+      input.addEventListener("change", function () { paste(this.value)})
+    }
+
+    function winBox () {
+      const opener = document.querySelector(".wf") || null,
+        cancel = document.querySelector(".window_form__cancel") || null,
+        win = document.querySelector(".wf_window") || null,
+        openButton = document.querySelector(".page_btn___add") || null;
+
+      if (!opener || !cancel || !win || !openButton) { return false;}
+
+      const toggle = status => opener.classList[status ? "add" : "remove"]("active")
+
+      win.addEventListener("click", function (ev) {
+        ev.stopPropagation();
+        return false;
+      })
+      opener.addEventListener("click", () => toggle(false))
+      cancel.addEventListener("click", () => toggle(false))
+      openButton.addEventListener("click", () => toggle(true))
+    }
+
+    checkbox()
+    file()
+    winBox()
+  })()

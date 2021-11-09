@@ -1,0 +1,67 @@
+.header {
+  align-items: center;
+  background-color: inherit;
+  display: grid;
+  height: var(--headerHeight);
+  justify-items: center;
+  grid-template-columns: 50px auto 50px;
+  margin: 0;
+  padding: var(--paddingPrimary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+
+  &_btn {
+    background-color: transparent;
+    background-position: center;
+    background-size: 40px;
+    background-repeat: no-repeat;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-grid;
+    height: 40px;
+    width: 40px;
+    outline-color: var(--primaryA);
+    position: relative;
+
+    &[data-state="default"] {
+      background-image: url("../icons/burger.svg");
+    }
+    &[data-state="active"] {
+      background-image: url("../icons/cross.svg");
+    }
+
+
+  }
+
+  .logo {
+    display: inline-grid;
+    position: absolute;
+    transition: top 150ms ease-out;
+    z-index: 4;
+    img {
+      transform: rotate(180deg);
+    }
+    &:hover, &:active {
+      top: -10px;
+      transition-timing-function: ease-in;
+    }
+  }
+
+  @media (min-width: 320px) {
+    .logo {
+      top: -15px;
+      img { width: 80px;}
+    }
+  }
+  @media (min-width: 1024px) {
+    .logo {
+      top: -25px;
+      img { width: 110px;}
+    }
+  }
+}
+
+

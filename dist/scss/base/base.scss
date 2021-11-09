@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap&subset=cyrillic');
+
+@media (min-width: 320px) {
+  :root {
+    --paddingMain: calc(var(--size) * 2);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --paddingMain: calc(var(--size) * 4);
+  }
+}
+
+:root {
+  --mainWidth: 300px;
+  --headerHeight: 70px;
+  --footerHeight: 50px;
+  --size: 4px;
+  --paddingPrimary: var(--paddingMain) var(--paddingMain) calc(var(--paddingMain) * 2) var(--paddingMain);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--backgroundPrimary);
+  color: var(--contentPrimary);
+  font-family: "Roboto", sans-serif;
+  font-size: calc(var(--size) * 4); // 1em
+  height: auto;
+  line-height: 1.24;
+  min-height: 100vh;
+  position: relative;
+  width: 100%;
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto var(--footerHeight);
+  position: relative;
+}
+
+#content, main {
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+}
+
+#content {
+  flex-direction: column;
+  flex: auto;
+  padding: var(--headerHeight) 0 0;
+}
+
+main {
+  flex: auto;
+  padding: 0 var(--paddingMain);
+}

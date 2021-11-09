@@ -1,0 +1,26 @@
+block card
+    -
+        var zombax = [
+            { title: "Зомбарь №1", src: "images/z1.webp", desc: "Обитает на планете земля, кушает мозги, воняет, медленный" },
+            { title: "Зомбарь №2", src: "images/z2.jpg", desc: "Кушает что поймает, может бегать. Воняет одуванчиками, сажает огород" },
+            { title: "Зомбарь №3", src: "images/z3.jpg", desc: "Вылазит из болот, привлекает мотыльков, любит кушать рыбку, крепкий, тяжелый" }
+        ];
+        var counts = new Array(21);
+
+
+    mixin card(title, src, desc)
+        .card
+            .card_title= title
+            .card_photo
+                img(src=src)
+            .card_desc= desc
+
+    each c in counts
+        +card(zombax[Math.floor(Math.random() * 3)].title, zombax[Math.floor(Math.random() * 3)].src, zombax[Math.floor(Math.random() * 3)].desc)
+
+    .empty
+    .empty
+    .empty
+    .empty
+    .empty
+    .empty

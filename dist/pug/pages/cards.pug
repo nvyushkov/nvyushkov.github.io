@@ -1,0 +1,16 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet" href="styles/pages/cards.css")
+
+block variables
+    - const pageTitle = 'Карточки зомби'
+    - const activeMenu = 1
+
+block content
+    main.page.cards
+        block add
+            include common/add
+        .cards_list
+            block list
+                include includes/cards/card

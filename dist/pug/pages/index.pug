@@ -1,0 +1,13 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet" href="styles/pages/index.css")
+
+block variables
+  - const pageTitle = 'Главная страница'
+  - const activeMenu = 0
+
+block content
+    main.page.main
+        block add
+            include common/add

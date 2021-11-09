@@ -1,0 +1,25 @@
+block nav
+    #nav.nav
+        button.nav_close#navClose(type="button")
+            img(alt="Закрыть меню" src="./icons/cross.svg")
+            span.border.bottom
+            span.border.right
+        nav
+            li
+                a(class=activeMenu === 0 ? 'active' :'' href="index.html")= "Главная"
+            li
+                a(class=activeMenu === 1 ? 'active' :'' href="cards.html")= "Карточки"
+
+    script.
+      (function(){
+        const openBtn = document.querySelector("#navOpen") || null,
+          closeBtn = document.querySelector("#navClose") || null,
+          nav = document.querySelector("#nav") || null;
+
+        if (!openBtn || !closeBtn || !nav) { return false }
+
+        const tgMenuState = status => nav.classList[status ? "add" : "remove"]("active")
+
+        openBtn.addEventListener("click", ()=>tgMenuState(true))
+        closeBtn.addEventListener("click", ()=>tgMenuState(false))
+      })()

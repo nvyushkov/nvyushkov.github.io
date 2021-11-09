@@ -1,0 +1,62 @@
+.button_bordered {
+  position: relative;
+  &__border {
+    background-color: var(--contentSecondary);
+    position: absolute;
+    transition-timing-function: ease-out;
+    transition-duration: 200ms;
+    transition-property: height, width;
+    z-index: 2;
+    &.hor {
+      height: 1px;
+      width: 0;
+    }
+    &.vert {
+      height: 0;
+      width: 1px;
+    }
+    &.bottom {
+      bottom: -1px;
+      right: 0;
+    }
+    &.top {
+      left: 0;
+      top: -1px;
+    }
+    &.left {
+      left: -1px;
+      top: 0;
+    }
+    &.right {
+      bottom: 0;
+      right: -1px;
+    }
+  }
+  &:hover, &:active {
+    .hor, .vert {
+      transition-timing-function: ease-in;
+    }
+    .hor {
+      width: 100%;
+    }
+    .vert {
+      height: 100%;
+    }
+    .bottom {
+      left: 0;
+      right: auto;
+    }
+    .top {
+      right: 0;
+      left: auto;
+    }
+    .left {
+      bottom: 0;
+      top: auto;
+    }
+    .right {
+      bottom: auto;
+      top: 0;
+    }
+  }
+}

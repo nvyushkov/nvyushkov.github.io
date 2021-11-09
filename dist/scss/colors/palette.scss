@@ -1,0 +1,24 @@
+:root {
+  --primaryA: var(--silver);
+  --primaryB: var(--gray);
+  --primaryC: var(--white);
+  --accent: var(--tomato);
+  --positive: var(--cian);
+  --negative: var(--watermelone);
+
+
+  // Background
+  --backgroundPrimary: var(--light);
+  --backgroundSecondary: var(--beige);
+  --backgroundTertiary: var(--white);
+  --backgroundOpacity: var(--silver_alpha08);
+
+  // Shadows
+  --shadowPrimary: var(--silver_alpha40);
+
+  // Content
+  --contentAccent: var(--tomato);
+  --contentPrimary: var(--gray);
+  --contentSecondary: var(--silver);
+  --contentTertiary: var(--watermelone);
+}

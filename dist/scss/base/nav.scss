@@ -1,0 +1,123 @@
+.nav {
+  --navWidth: 300px;
+
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  left: calc(-1 * var(--navWidth));
+  position: fixed;
+  top: 0;
+  transition: left 150ms ease-out;
+  width: var(--navWidth);
+  z-index: 2;
+
+  &.active {
+    box-shadow: 2px var(--headerHeight) 20px 0 var(--shadowPrimary);
+    left: 0;
+    transition-timing-function: ease-in;
+  }
+
+  &_close {
+    align-items: center;
+    background-color: var(--backgroundPrimary);
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    height: var(--headerHeight);
+    justify-content: center;
+    margin-bottom: calc(var(--size) * 8);
+    position: relative;
+    transition: background-color 150ms ease-out;
+
+    img {
+      display: flex;
+      height: 40px;
+      width: 40px;
+    }
+
+    .border {
+      background-color: var(--contentSecondary);
+      bottom: 0;
+      display: flex;
+      position: absolute;
+      transition-timing-function: ease-out;
+      transition-duration: 200ms;
+
+      &.bottom {
+        height: 1px;
+        left: 0;
+        transition-property: width;
+        width: 0;
+      }
+
+      &.right {
+        right: 0;
+        height: 0;
+        transition-property: height;
+        width: 1px;
+      }
+    }
+
+    &:hover, &:active {
+      background-color: var(--backgroundTertiary);
+      transition-timing-function: ease-in;
+
+      .border {
+        transition-timing-function: ease-in;
+        &.bottom {
+          width: 100%;
+        }
+
+        &.right {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+
+  li {
+    display: inline-flex;
+    flex-direction: column;
+
+    &:nth-of-type(n+2) {
+      margin-top: calc(var(--size) * 4);
+    }
+  }
+
+  a {
+    border-bottom: 1px solid var(--silver);
+    color: var(--contentPrimary);
+    cursor: pointer;
+    display: flex;
+    padding: calc(var(--size) * 2) calc(var(--size) * 4);
+    margin-left: calc(var(--size) * 4);
+    text-decoration: none;
+    transition-timing-function: ease-out;
+    transition-duration: 200ms;
+    transition-property: color, margin-left, padding-left, border-bottom-color;
+    &.active {
+      color: var(--contentAccent);
+    }
+    &:hover {
+      color: var(--contentTertiary);
+      margin-left: 0;
+      padding-left: calc(var(--size) * 8);
+    }
+    &:active {
+      color: var(--contentPrimary);
+      margin-left: calc(var(--size) * -1);
+    }
+    &:hover, &:active {
+      border-bottom-color: var(--contentTertiary);
+      transition-timing-function: ease-in;
+    }
+  }
+}
